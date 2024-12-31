@@ -22,6 +22,10 @@ declare global {
     email: string;
     publicMetadata: {
       userType: "teacher" | "student";
+      settings?: UserSettings;
+      paymentMethods?: Array<PaymentMethod>;
+      defaultPaymentMethodId?: string;
+      stripeCustomerId?: string;
     };
     privateMetadata: {
       settings?: UserSettings;

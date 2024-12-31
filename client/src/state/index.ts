@@ -7,7 +7,8 @@ interface InitialStateTypes {
     isSectionModalOpen: boolean;
     selectedSectionIndex: number | null;
     selectedChapterIndex: number | null;
-  };
+  },
+  isDarkMode: boolean;
 }
 
 const initialState: InitialStateTypes = {
@@ -18,12 +19,16 @@ const initialState: InitialStateTypes = {
     selectedSectionIndex: null,
     selectedChapterIndex: null,
   },
+  isDarkMode: false,
 };
 
 export const globalSlice = createSlice({
   name: "global",
   initialState,
   reducers: {
+    setIsDarkMode: (state, action: PayloadAction<boolean>) => {
+      state.isDarkMode = action.payload;
+    },
     setSections: (state, action: PayloadAction<Section[]>) => {
       state.courseEditor.sections = action.payload;
     },
@@ -103,6 +108,7 @@ export const globalSlice = createSlice({
 });
 
 export const {
+  setIsDarkMode,
   setSections,
   openChapterModal,
   closeChapterModal,

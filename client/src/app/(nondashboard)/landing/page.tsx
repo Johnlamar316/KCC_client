@@ -1,11 +1,16 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useCarousel } from "@/hooks/useCarousel";
+import { useGetCoursesQuery } from "@/state/api";
+import CourseCardSearch from "@/components/CourseCardSearch";
+import { useRouter } from "next/navigation";
+import { subscriptionData } from "@/lib/mockData";
+import SubscriptionCard from "@/components/SubscriptionCard";
 
 const LoadingSkeleton = () => {
   return (
@@ -41,7 +46,24 @@ const LoadingSkeleton = () => {
 };
 
 const Landing = () => {
+  const router = useRouter();
   const currentImage = useCarousel({ totalImages: 3 });
+  const { data: courses, isLoading, isError } = useGetCoursesQuery({});
+  const [showAllCourses, setShowAllCourses] = useState(false);
+
+  const handleToggleCourses = () => {
+    setShowAllCourses(!showAllCourses);
+  };
+
+  const displayedCourses = showAllCourses ? courses : courses?.slice(0, 4);
+
+  if (isLoading) return <LoadingSkeleton />;
+
+  const handleCourseClick = (courseId: string) => {
+    router.push(`/search?id=${courseId}`, {
+      scroll: false,
+    });
+  };
 
   return (
     <motion.div
@@ -49,6 +71,32 @@ const Landing = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
       className="landing">
+      <motion.div
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="h-[80vh] flex flex-col md:flex-row items-center justify-center gap-8 px-6 md:px-1">
+        <div className="text-center md:text-left max-w-lg">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-800">
+            Coding Courses for Kids and Teens
+          </h1>
+          <p className="mt-4 text-lg md:text-xl text-gray-700">
+            Children are great imitators. So give them something great to
+            imitate.
+          </p>
+          <button className="mt-6 px-6 py-3  text-white font-semibold rounded-lg shadow-lg transition bg-customgreys-secondarybg">
+            Get Started
+          </button>
+        </div>
+        <div className="flex justify-center md:justify-end">
+          <img
+            src="/rb_28276.png"
+            alt="Coding Illustration"
+            className="w-full"
+          />
+        </div>
+      </motion.div>
+
       <motion.div
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -111,23 +159,44 @@ const Landing = () => {
             </span>
           ))}
         </div>
-        {/* <div className="landing__courses">
-          {courses &&
-            courses.slice(0, 4).map((course, index) => (
+        <div className="landing__courses">
+          {displayedCourses &&
+            displayedCourses.map((course, index) => (
               <motion.div
                 key={course.courseId}
                 initial={{ y: 50, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
-                viewport={{ amount: 0.4 }}
-              >
+                viewport={{ amount: 0.4 }}>
                 <CourseCardSearch
                   course={course}
                   onClick={() => handleCourseClick(course.courseId)}
                 />
               </motion.div>
             ))}
-        </div> */}
+        </div>
+        <div
+          className="text-primary-50 mt-4 cursor-pointer"
+          onClick={handleToggleCourses}>
+          {showAllCourses ? "Show less" : "Show all courses"}
+        </div>
+        <div className="landing__subscriptions py-12 mt-10">
+          <h2 className="text-2xl font-semibold mb-6">
+            Your Subscription Plans
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {subscriptionData.map((sub, index) => (
+              <motion.div
+                key={sub.subscriptionId}
+                initial={{ y: 50, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+                viewport={{ amount: 0.4 }}>
+                <SubscriptionCard key={sub.subscriptionId} {...sub} />
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </motion.div>
     </motion.div>
   );

@@ -1,5 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { User } from "@clerk/nextjs/server";
+import { Clerk } from "@clerk/clerk-js";
 import { BaseQueryApi, FetchArgs } from "@reduxjs/toolkit/query";
+import { toast } from "sonner";
 
 const customBaseQuery = async (
   args: string | FetchArgs,
@@ -8,6 +11,13 @@ const customBaseQuery = async (
 ) => {
   const baseQuery = fetchBaseQuery({
     baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL,
+    prepareHeaders: async (headers) => {
+      const token = await window.Clerk?.session?.getToken();
+      if (token) {
+        headers.set("Authorization", `Bearer ${token}`);
+      }
+      return headers;
+    },
   });
 
   try {
@@ -19,6 +29,7 @@ const customBaseQuery = async (
         errorData?.message ||
         result.error.status.toString() ||
         "An error occurred";
+        toast.error(`Error: ${errorMessage}`);
     }
 
     const isMutationRequest =
@@ -26,6 +37,7 @@ const customBaseQuery = async (
 
     if (isMutationRequest) {
       const successMessage = result.data?.message;
+      if (successMessage) toast.success(successMessage);
     }
 
     if (result.data) {
@@ -49,9 +61,9 @@ const customBaseQuery = async (
 export const api = createApi({
   baseQuery: customBaseQuery,
   reducerPath: "api",
-  tagTypes: ["Courses", "Users", "UserCourseProgress"],
+  tagTypes: ["Courses", "Users"],
   endpoints: (build) => ({
-    /* 
+      /* 
     ===============
     USER CLERK
     =============== 
@@ -65,7 +77,8 @@ export const api = createApi({
       invalidatesTags: ["Users"],
     }),
 
-    /* 
+
+  /* 
     ===============
     COURSES
     =============== 
@@ -117,24 +130,7 @@ export const api = createApi({
       invalidatesTags: ["Courses"],
     }),
 
-    getUploadVideoUrl: build.mutation<
-      { uploadUrl: string; videoUrl: string },
-      {
-        courseId: string;
-        chapterId: string;
-        sectionId: string;
-        fileName: string;
-        fileType: string;
-      }
-    >({
-      query: ({ courseId, sectionId, chapterId, fileName, fileType }) => ({
-        url: `courses/${courseId}/sections/${sectionId}/chapters/${chapterId}/get-upload-url`,
-        method: "POST",
-        body: { fileName, fileType },
-      }),
-    }),
-
-    /* 
+        /* 
     ===============
     TRANSACTIONS
     =============== 
@@ -160,65 +156,7 @@ export const api = createApi({
       }),
     }),
 
-    /* 
-    ===============
-    USER COURSE PROGRESS
-    =============== 
-    */
-    getUserEnrolledCourses: build.query<Course[], string>({
-      query: (userId) => `users/course-progress/${userId}/enrolled-courses`,
-      providesTags: ["Courses", "UserCourseProgress"],
     }),
-
-    getUserCourseProgress: build.query<
-      UserCourseProgress,
-      { userId: string; courseId: string }
-    >({
-      query: ({ userId, courseId }) =>
-        `users/course-progress/${userId}/courses/${courseId}`,
-      providesTags: ["UserCourseProgress"],
-    }),
-
-    updateUserCourseProgress: build.mutation<
-      UserCourseProgress,
-      {
-        userId: string;
-        courseId: string;
-        progressData: {
-          sections: SectionProgress[];
-        };
-      }
-    >({
-      query: ({ userId, courseId, progressData }) => ({
-        url: `users/course-progress/${userId}/courses/${courseId}`,
-        method: "PUT",
-        body: progressData,
-      }),
-      invalidatesTags: ["UserCourseProgress"],
-      async onQueryStarted(
-        { userId, courseId, progressData },
-        { dispatch, queryFulfilled }
-      ) {
-        const patchResult = dispatch(
-          api.util.updateQueryData(
-            "getUserCourseProgress",
-            { userId, courseId },
-            (draft) => {
-              Object.assign(draft, {
-                ...draft,
-                sections: progressData.sections,
-              });
-            }
-          )
-        );
-        try {
-          await queryFulfilled;
-        } catch {
-          patchResult.undo();
-        }
-      },
-    }),
-  }),
 });
 
 export const {
@@ -228,11 +166,7 @@ export const {
   useDeleteCourseMutation,
   useGetCoursesQuery,
   useGetCourseQuery,
-  useGetUploadVideoUrlMutation,
   useGetTransactionsQuery,
   useCreateTransactionMutation,
   useCreateStripePaymentIntentMutation,
-  useGetUserEnrolledCoursesQuery,
-  useGetUserCourseProgressQuery,
-  useUpdateUserCourseProgressMutation,
 } = api;

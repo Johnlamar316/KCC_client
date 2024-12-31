@@ -12,26 +12,27 @@ export function cn(...inputs: ClassValue[]) {
 export function formatPrice(cents: number | undefined): string {
   return new Intl.NumberFormat("en-US", {
     style: "currency",
-    currency: "USD",
+    currency: "GBP",
   }).format((cents || 0) / 100);
 }
 
-// Convert dollars to cents (e.g., "49.99" -> 4999)
-export function dollarsToCents(dollars: string | number): number {
-  const amount = typeof dollars === "string" ? parseFloat(dollars) : dollars;
+// Convert pounds to cents (e.g., "49.99" -> 4999)
+export function poundsToCents(pounds: string | number): number {
+  const amount = typeof pounds === "string" ? parseFloat(pounds) : pounds;
   return Math.round(amount * 100);
 }
 
-// Convert cents to dollars (e.g., 4999 -> "49.99")
-export function centsToDollars(cents: number | undefined): string {
+
+// Convert cents to pounds (e.g., 4999 -> "49.99")
+export function centsToPounds(cents: number | undefined): string {
   return ((cents || 0) / 100).toString();
 }
 
-// Zod schema for price input (converts dollar input to cents)
+// Zod schema for price input (converts pound input to cents)
 export const priceSchema = z.string().transform((val) => {
-  const dollars = parseFloat(val);
-  if (isNaN(dollars)) return "0";
-  return dollarsToCents(dollars).toString();
+  const pounds = parseFloat(val);
+  if (isNaN(pounds)) return "0"; 
+  return poundsToCents(pounds).toString();
 });
 
 export const countries = [
