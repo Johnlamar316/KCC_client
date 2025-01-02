@@ -85,7 +85,10 @@ const Landing = () => {
             imitate.
           </p>
           <button className="mt-6 px-6 py-3  text-white font-semibold rounded-lg shadow-lg transition bg-customgreys-secondarybg">
-            Get Started
+            Enroll Now
+          </button>
+          <button className="mt-6 px-6 py-3  text-white font-semibold rounded-lg shadow-lg transition">
+            Watch Now
           </button>
         </div>
         <div className="flex justify-center md:justify-end">

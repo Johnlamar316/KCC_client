@@ -16,6 +16,7 @@ import {
   Briefcase,
   LogOut,
   PanelLeft,
+  LayoutDashboard,
   PoundSterling,
   Settings,
   User,
@@ -34,6 +35,7 @@ const AppSidebar = () => {
 
   const navLinks = {
     student: [
+      { icon: LayoutDashboard, label: "Dashboard", href: "/dashboard" },
       { icon: BookOpen, label: "Courses", href: "/user/courses" },
       { icon: Briefcase, label: "Billing", href: "/user/billing" },
       { icon: User, label: "Profile", href: "/user/profile" },
@@ -41,6 +43,7 @@ const AppSidebar = () => {
       { icon: Users, label: "Usertype", href: "/user/usertype" },
     ],
     teacher: [
+      { icon: LayoutDashboard, label: "Dashboard", href: "/dashboard" },
       { icon: BookOpen, label: "Courses", href: "/teacher/courses" },
       { icon: PoundSterling, label: "Billing", href: "/teacher/billing" },
       { icon: User, label: "Profile", href: "/teacher/profile" },

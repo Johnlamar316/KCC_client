@@ -17,8 +17,8 @@ body,
   height: 100%;
   width: 100%;
   @apply text-sm;
-  @apply text-gray-300;
-  @apply bg-customgreys-primarybg;
+  @apply text-gray-600;
+  @apply bg-primary-mainground;
 }
 
 :root {
@@ -1241,8 +1241,13 @@ input[type="color"] {
 }
 
 /* NonDashboard Navbar */
+
+/* .nondashboard-navbar__search-input {
+  @apply bg-customgreys-secondarybg pl-10 sm:pl-14 pr-6 sm:pr-20 py-3 sm:py-4 rounded-xl text-customgreys-dirtyGrey hover:text-white-50 hover:bg-customgreys-primarybg transition-all duration-300 text-sm sm:text-base;
+} */
+
 .nondashboard-navbar {
-  @apply w-full flex justify-center bg-customgreys-primarybg;
+  @apply w-full flex justify-center bg-primary-mainground;
 }
 
 .nondashboard-navbar__container {
@@ -1257,16 +1262,16 @@ input[type="color"] {
   @apply font-bold text-lg sm:text-xl hover:text-customgreys-dirtyGrey;
 }
 
-.nondashboard-navbar__search-input {
-  @apply bg-customgreys-secondarybg pl-10 sm:pl-14 pr-6 sm:pr-20 py-3 sm:py-4 rounded-xl text-customgreys-dirtyGrey hover:text-white-50 hover:bg-customgreys-darkerGrey transition-all duration-300 text-sm sm:text-base;
-}
-
 .nondashboard-navbar__search-icon {
   @apply absolute left-3 sm:left-5 top-1/2 transform -translate-y-1/2 text-customgreys-dirtyGrey transition-all duration-300;
 }
 
 .nondashboard-navbar__actions {
   @apply flex items-center gap-2 sm:gap-4;
+}
+
+.nondashboard-navbar__actions_mobile {
+  @apply flex flex-col items-center gap-2 sm:gap-4 mt-9;
 }
 
 .nondashboard-navbar__notification-button {
@@ -1281,12 +1286,16 @@ input[type="color"] {
   @apply text-gray-400 w-4 h-4 sm:w-5 sm:h-5;
 }
 
+.nondashboard-navbar__tops {
+  @apply hover:text-slate-900 hover:underline transition-all duration-300 text-customgreys-primarybg font-bold;
+}
+
 .nondashboard-navbar__auth-button--login {
-  @apply text-customgreys-dirtyGrey hover:bg-customgreys-darkerGrey hover:text-white-50 px-3 sm:px-4 py-1.5 sm:py-2 rounded-md border-customgreys-dirtyGrey border-[1px] text-sm sm:text-base;
+  @apply text-customgreys-secondarybg hover:bg-customgreys-secondarybg hover:text-white-50 px-3 sm:px-4 py-1.5 sm:py-2 rounded-md border-customgreys-dirtyGrey border-[1px] text-sm sm:text-base transition-all duration-300;
 }
 
 .nondashboard-navbar__auth-button--signup {
-  @apply bg-primary-700 px-3 sm:px-4 py-1.5 sm:py-2 rounded-md hover:bg-primary-600 text-sm sm:text-base;
+  @apply bg-customgreys-primarybg text-white-50  px-3 sm:px-4 py-1.5 sm:py-2 rounded-md hover:bg-customgreys-secondarybg text-sm sm:text-base transition-all duration-300;
 }
 
 /* Add these classes for group hover effects */

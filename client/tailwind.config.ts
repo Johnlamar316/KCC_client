@@ -53,12 +53,11 @@ const config = {
   				ring: 'hsl(var(--sidebar-ring))'
   			},
   			customgreys: {
-					primarybg: '#ecebe6',
-  				// primarybg: '#0a2550',
+					primarybg: '#f0831a',
   				secondarybg: '#0b1e3e',
   				darkGrey: '#E9ECEF',
-  				darkerGrey: '#f0831a',
-  				dirtyGrey: '#CED4DA'
+  				darkerGrey: '#ecebe6',
+  				dirtyGrey: '#8c8a84'
   			},
 				primary: {
 					"50": "#fff6e9", 
@@ -74,6 +73,7 @@ const config = {
 					"900": "#562d09",
 					"950": "#2d1805",
 					DEFAULT: "#f0831a",
+					mainground: "#f6f0ea",
 					foreground: "#ffffff", 
 				},
 				secondary: {

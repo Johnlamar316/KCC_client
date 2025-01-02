@@ -1,17 +1,37 @@
 "use client";
 
-import { Bell, BookOpen, Moon, Sun } from "lucide-react";
+import { Bell, BookOpen, Moon, Sun, Menu, X } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import React from "react";
+import { useState, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@/state/redux";
 import { setIsDarkMode } from "@/state";
 import { SignedIn, SignedOut, UserButton, useUser } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
+// import { Sheet } from "./ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import NonDashboardMenuList from "./NonDashboardMenuList";
 
 const NonDashboardNavbar = () => {
   const { user } = useUser();
   const userRole = user?.publicMetadata?.userType as "student" | "teacher";
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.matchMedia("(max-width: 1024px)").matches);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const dispatch = useAppDispatch();
   const isDarkMode = useAppSelector((state) => state.global.isDarkMode);
@@ -27,11 +47,12 @@ const NonDashboardNavbar = () => {
               height={100}
             />
           </Link>
+
           <div className="flex items-center gap-4">
             <div className="relative group">
               <Link
                 href="/search"
-                className="nondashboard-navbar__search-input"
+                className="bg-customgreys-secondarybg pl-10 sm:pl-14 pr-6 sm:pr-20 py-3 sm:py-4 rounded-xl text-customgreys-dirtyGrey hover:text-white-50 hover:bg-customgreys-primarybg transition-all duration-300 text-sm sm:text-base"
                 scroll={false}>
                 <span className="hidden sm:inline">Search Courses</span>
                 <span className="sm:hidden">Search</span>
@@ -43,55 +64,24 @@ const NonDashboardNavbar = () => {
             </div>
           </div>
         </div>
-        <div className="nondashboard-navbar__actions">
-          {/* Icons */}
-          <div className="flex items-center">
-            <button
-              onClick={() => dispatch(setIsDarkMode(!isDarkMode))}
-              className={isDarkMode ? `rounded p-2` : `rounded p-2`}>
-              {isDarkMode ? (
-                <Sun className="h-6 w-6 cursor-pointer dark:text-white" />
-              ) : (
-                <Moon className="h-6 w-6 cursor-pointer dark:text-white" />
-              )}
-            </button>
-            <button className="nondashboard-navbar__notification-button">
-              <span className="nondashboard-navbar__notification-indicator"></span>
-              <Bell className="nondashboard-navbar__notification-icon" />
-            </button>
-          </div>
-          <SignedIn>
-            <UserButton
-              appearance={{
-                // baseTheme: isDarkMode ? dark : undefined,
-                elements: {
-                  userButtonOuterIdentifier: "text-customgreys-dirtyGrey",
-                  userButtonBox: "scale-90 sm:scale-100",
-                },
-              }}
-              showName={true}
-              userProfileMode="navigation"
-              userProfileUrl={
-                userRole === "teacher" ? "/teacher/profile" : "/user/profile"
-              }
-            />
-          </SignedIn>
-          <SignedOut>
-            <Link
-              href="/signin"
-              className="nondashboard-navbar__auth-button--login"
-              scroll={false}>
-              Log in
-            </Link>
-            <Link
-              href="/signup"
-              className="nondashboard-navbar__auth-button--signup"
-              scroll={false}>
-              Sign up
-            </Link>
-          </SignedOut>
-        </div>
+
+        {!isMobile && <NonDashboardMenuList userRole={userRole} />}
       </div>
+      {isMobile ? (
+        <Sheet>
+          <SheetTrigger>
+            <Menu
+              size={24}
+              className="sm:block lg:hidden text-customgreys-dirtyGrey focus:outline-none"
+            />
+          </SheetTrigger>
+          <SheetContent>
+            <SheetHeader>
+              <NonDashboardMenuList userRole={userRole} isMobileView={true} />
+            </SheetHeader>
+          </SheetContent>
+        </Sheet>
+      ) : null}
     </nav>
   );
 };
