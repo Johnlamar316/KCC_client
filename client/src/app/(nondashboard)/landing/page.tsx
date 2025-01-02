@@ -102,6 +102,8 @@ const Landing = () => {
         </div>
       </motion.div>
 
+      <h1>HELLO WORLD</h1>
+
       <motion.div
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -191,16 +193,14 @@ const Landing = () => {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {subscriptionData.map((sub, index) => (
-              <div
+              <motion.div
                 key={sub.subscriptionId}
-                // initial={{ y: 50, opacity: 0 }}
-                // whileInView={{ y: 0, opacity: 1 }}
-                // transition={{ duration: 0.5, delay: index * 0.2 }}
-                // viewport={{ amount: 0.4 }
-                // }
-              >
+                initial={{ y: 50, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+                viewport={{ amount: 0.4 }}>
                 <SubscriptionCard key={sub.subscriptionId} {...sub} />
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
