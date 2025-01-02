@@ -1,6 +1,5 @@
 import { CustomFormField } from "@/components/CustomFormField";
 import CustomModal from "@/components/CustomModal";
-
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -111,8 +110,7 @@ const ChapterModal = () => {
         <Form {...methods}>
           <form
             onSubmit={methods.handleSubmit(onSubmit)}
-            className="chapter-modal__form"
-          >
+            className="chapter-modal__form">
             <CustomFormField
               name="title"
               label="Chapter Title"

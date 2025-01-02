@@ -17,9 +17,9 @@ import {
   LogOut,
   PanelLeft,
   PoundSterling,
-  PoundSterlingIcon,
   Settings,
   User,
+  Users,
 } from "lucide-react";
 import Loading from "./Loading";
 import Image from "next/image";
@@ -38,6 +38,7 @@ const AppSidebar = () => {
       { icon: Briefcase, label: "Billing", href: "/user/billing" },
       { icon: User, label: "Profile", href: "/user/profile" },
       { icon: Settings, label: "Settings", href: "/user/settings" },
+      { icon: Users, label: "Usertype", href: "/user/usertype" },
     ],
     teacher: [
       { icon: BookOpen, label: "Courses", href: "/teacher/courses" },
