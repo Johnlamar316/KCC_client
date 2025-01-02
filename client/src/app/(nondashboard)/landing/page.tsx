@@ -92,10 +92,12 @@ const Landing = () => {
           </button>
         </div>
         <div className="flex justify-center md:justify-end">
-          <img
+          <Image
             src="/rb_28276.png"
             alt="Coding Illustration"
             className="w-full"
+            width={1000}
+            height={1000}
           />
         </div>
       </motion.div>
@@ -190,12 +192,12 @@ const Landing = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {subscriptionData.map((sub, index) => (
               <div
-              // key={sub.subscriptionId}
-              // initial={{ y: 50, opacity: 0 }}
-              // whileInView={{ y: 0, opacity: 1 }}
-              // transition={{ duration: 0.5, delay: index * 0.2 }}
-              // viewport={{ amount: 0.4 }
-              // }
+                key={sub.subscriptionId}
+                // initial={{ y: 50, opacity: 0 }}
+                // whileInView={{ y: 0, opacity: 1 }}
+                // transition={{ duration: 0.5, delay: index * 0.2 }}
+                // viewport={{ amount: 0.4 }
+                // }
               >
                 <SubscriptionCard key={sub.subscriptionId} {...sub} />
               </div>
