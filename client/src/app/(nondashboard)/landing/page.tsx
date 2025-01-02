@@ -119,8 +119,28 @@ const Landing = () => {
             </motion.div>
           ))}
       </div>
+      <div
+        className="text-primary-50 mt-4 cursor-pointer"
+        onClick={handleToggleCourses}>
+        {showAllCourses ? "Show less" : "Show all courses"}
+      </div>
+      <div className="landing__subscriptions py-12 mt-10">
+        <h2 className="text-2xl font-semibold mb-6">Your Subscription Plans</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {subscriptionData.map((sub, index) => (
+            <motion.div
+              key={sub.subscriptionId}
+              initial={{ y: 50, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.5, delay: index * 0.2 }}
+              viewport={{ amount: 0.4 }}>
+              <SubscriptionCard key={sub.subscriptionId} {...sub} />
+            </motion.div>
+          ))}
+        </div>
+      </div>
 
-      <motion.div
+      {/* <motion.div
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
@@ -155,13 +175,14 @@ const Landing = () => {
             )
           )}
         </div>
-      </motion.div>
-      <motion.div
-        initial={{ y: 20, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        viewport={{ amount: 0.3, once: true }}
-        className="landing__featured">
+      </motion.div> */}
+      <div
+      // initial={{ y: 20, opacity: 0 }}
+      // whileInView={{ y: 0, opacity: 1 }}
+      // transition={{ duration: 0.5 }}
+      // viewport={{ amount: 0.3, once: true }}
+      // className="landing__featured"
+      >
         <h2 className="landing__featured-title">Featured Courses</h2>
         <p className="landing__featured-description">
           From beginner to advanced, in all industries, we have the right
@@ -182,7 +203,7 @@ const Landing = () => {
             </span>
           ))}
         </div>
-        <div className="landing__courses">
+        {/* <div className="landing__courses">
           {displayedCourses &&
             displayedCourses.map((course, index) => (
               <motion.div
@@ -197,13 +218,13 @@ const Landing = () => {
                 />
               </motion.div>
             ))}
-        </div>
-        <div
+        </div> */}
+        {/* <div
           className="text-primary-50 mt-4 cursor-pointer"
           onClick={handleToggleCourses}>
           {showAllCourses ? "Show less" : "Show all courses"}
-        </div>
-        <div className="landing__subscriptions py-12 mt-10">
+        </div> */}
+        {/* <div className="landing__subscriptions py-12 mt-10">
           <h2 className="text-2xl font-semibold mb-6">
             Your Subscription Plans
           </h2>
@@ -219,8 +240,8 @@ const Landing = () => {
               </motion.div>
             ))}
           </div>
-        </div>
-      </motion.div>
+        </div> */}
+      </div>
     </motion.div>
   );
 };
