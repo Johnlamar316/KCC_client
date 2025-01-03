@@ -277,7 +277,7 @@ input[type="color"] {
 }
 
 .landing__title {
-  @apply text-4xl font-bold mb-4;
+  @apply text-4xl font-bold mb-4 text-white-100;
 }
 
 .landing__description {
@@ -289,7 +289,7 @@ input[type="color"] {
 }
 
 .landing__cta-button {
-  @apply bg-primary-700 hover:bg-primary-600 px-4 py-2 rounded-md;
+  @apply bg-customgreys-primarybg text-white-50 hover:bg-primary-600 px-4 py-2 rounded-md;
 }
 
 .landing__hero-images {
@@ -1045,8 +1045,13 @@ input[type="color"] {
 
 /* Course Card Search */
 .course-card-search {
-  @apply bg-customgreys-secondarybg overflow-hidden rounded-lg hover:bg-white-100/10 transition duration-200 flex flex-col cursor-pointer border-2 h-full;
+  @apply bg-customgreys-secondarybg overflow-hidden rounded-lg transition-transform duration-300 flex flex-col cursor-pointer border-2 h-full;
 }
+
+.course-card-search:hover {
+  @apply transform scale-105;
+}
+
 
 .course-card-search--selected {
   @apply border-primary-600;
@@ -1109,7 +1114,7 @@ input[type="color"] {
 
 /* Footer */
 .footer {
-  @apply bg-customgreys-secondarybg bottom-0 w-full py-8 mt-10 text-center text-sm;
+  @apply bg-customgreys-secondarybg bottom-0 w-full py-8 mt-10 text-center text-sm ;
 }
 
 .footer__links {
@@ -1117,7 +1122,7 @@ input[type="color"] {
 }
 
 .footer__link {
-  @apply text-primary-500 mx-2;
+  @apply text-white-50 mx-2;
 }
 
 /* Loading */
@@ -1295,7 +1300,7 @@ input[type="color"] {
 }
 
 .nondashboard-navbar__auth-button--signup {
-  @apply bg-customgreys-primarybg text-white-50  px-3 sm:px-4 py-1.5 sm:py-2 rounded-md hover:bg-customgreys-secondarybg text-sm sm:text-base transition-all duration-300;
+  @apply bg-secondary-mainground text-white-50  px-3 sm:px-4 py-1.5 sm:py-2 rounded-md hover:bg-customgreys-secondarybg text-sm sm:text-base transition-all duration-300;
 }
 
 /* Add these classes for group hover effects */
@@ -1392,15 +1397,15 @@ input[type="color"] {
 }
 
 .course-card-search__title {
-  @apply font-semibold line-clamp-1;
+  @apply font-semibold line-clamp-1 text-white-50 text-lg;
 }
 
 .course-card-search__description {
-  @apply text-gray-500 text-sm mt-1 line-clamp-2;
+  @apply text-gray-400 text-sm mt-1 line-clamp-2;
 }
 
 .course-card-search__teacher {
-  @apply text-customgreys-dirtyGrey text-sm;
+  @apply text-gray-300 font-bold text-sm;
 }
 
 .course-card-search__footer {
@@ -1408,7 +1413,7 @@ input[type="color"] {
 }
 
 .course-card-search__price {
-  @apply text-primary-500 font-semibold;
+  @apply text-customgreys-primarybg font-semibold;
 }
 
 .course-card-search__enrollment {
@@ -1497,7 +1502,7 @@ input[type="color"] {
 
 /* Auth Layout */
 .auth-layout {
-  @apply h-full w-full bg-customgreys-primarybg;
+  @apply h-full w-full bg-primary-mainground;
 }
 
 .auth-layout__main {
@@ -1588,4 +1593,8 @@ input[type="color"] {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.cl-internal-1dauvpw {
+  display: none !important;
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { Play } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
@@ -9,7 +10,7 @@ import { useCarousel } from "@/hooks/useCarousel";
 import { useGetCoursesQuery } from "@/state/api";
 import CourseCardSearch from "@/components/CourseCardSearch";
 import { useRouter } from "next/navigation";
-import { subscriptionData } from "@/lib/mockData";
+import { subscriptionData, testemonials } from "@/lib/mockData";
 import SubscriptionCard from "@/components/SubscriptionCard";
 
 const LoadingSkeleton = () => {
@@ -84,12 +85,18 @@ const Landing = () => {
             Children are great imitators. So give them something great to
             imitate.
           </p>
-          <button className="mt-6 px-6 py-3  text-white font-semibold rounded-lg shadow-lg transition bg-customgreys-secondarybg">
-            Enroll Now
-          </button>
-          <button className="mt-6 px-6 py-3  text-white font-semibold rounded-lg shadow-lg transition">
-            Watch Now
-          </button>
+          <div className="flex">
+            <button
+              onClick={() => router.push("/signup")}
+              className="mt-6 px-6 py-3 text-white-50 font-semibold rounded-lg shadow-lg mr-4 uppercase bg-secondary-mainground hover:bg-customgreys-secondarybg transition-all duration-300">
+              Enroll Now
+            </button>
+
+            <button className="mt-6 px-6 py-3 text-white font-semibold rounded-lg shadow-lg border-2 border-fuchsia-700 hover:bg-fuchsia-800 hover:text-white-50 transition-all duration-300 uppercase text-fuchsia-700 flex items-center group">
+              <Play className="w-5 h-5 text-fuchsia-700 group-hover:text-white-50 transition-all duration-300" />
+              <span className="ml-2">Watch Now</span>
+            </button>
+          </div>
         </div>
         <div className="flex justify-center md:justify-end">
           <Image
@@ -138,30 +145,35 @@ const Landing = () => {
           )}
         </div>
       </motion.div>
-      <div className="landing__courses">
-        {displayedCourses &&
-          displayedCourses.map((course, index) => (
-            <motion.div
-              key={course.courseId}
-              initial={{ y: 50, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-              viewport={{ amount: 0.4 }}>
-              <CourseCardSearch
-                course={course}
-                onClick={() => handleCourseClick(course.courseId)}
-              />
-            </motion.div>
-          ))}
+
+      <div className="mb-20">
+        <h2 className="text-2xl font-semibold mb-6">Courses</h2>
+        <div className="landing__courses">
+          {displayedCourses &&
+            displayedCourses.map((course, index) => (
+              <motion.div
+                key={course.courseId}
+                initial={{ y: 50, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+                viewport={{ amount: 0.4 }}>
+                <CourseCardSearch
+                  course={course}
+                  onClick={() => handleCourseClick(course.courseId)}
+                />
+              </motion.div>
+            ))}
+        </div>
+        <div
+          className="text-customgrey-secondarybg mt-4 cursor-pointer"
+          onClick={handleToggleCourses}>
+          {showAllCourses ? "Show less" : "Show all courses"}
+        </div>
       </div>
-      <div
-        className="text-primary-50 mt-4 cursor-pointer"
-        onClick={handleToggleCourses}>
-        {showAllCourses ? "Show less" : "Show all courses"}
-      </div>
-      <div className="landing__subscriptions py-12 mt-10">
+
+      <div className="py-12 mt-10">
         <h2 className="text-2xl font-semibold mb-6">Your Subscription Plans</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
           {subscriptionData.map((sub, index) => (
             <motion.div
               key={sub.subscriptionId}
@@ -175,25 +187,64 @@ const Landing = () => {
         </div>
       </div>
 
-      <div>
+      <div className="mb-20">
         <h2 className="landing__featured-title">Featured Courses</h2>
         <p className="landing__featured-description">
           From beginner to advanced, in all industries, we have the right
-          courses just for you and preparing your entire journey for learning
-          and making the most.
+          courses just for you and preparing your entire journey <br /> for
+          learning and making the most.
         </p>
 
         <div className="landing__tags">
           {[
             "web development",
-            "enterprise IT",
-            "react nextjs",
+            "IT",
+            "html",
+            "css",
+            "python",
             "javascript",
-            "backend development",
+            "Scratch",
+            "code combat",
+            "roblox studio",
           ].map((tag, index) => (
-            <span key={index} className="landing__tag">
+            <span key={index} className="landing__tag text-white-50">
               {tag}
             </span>
+          ))}
+        </div>
+      </div>
+
+      <div className="py-12">
+        <h2 className="text-2xl font-semibold mb-4">What Our Students Say</h2>
+        <p className="text-customgreys-dirtyGrey mb-6">
+          Hear from the students who have transformed their learning journey
+          with our courses—and their parents <br /> who saw the change
+          firsthand.
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {testemonials.map((testimonial, index) => (
+            <motion.div
+              key={index}
+              className="p-6 rounded-lg shadow-lg bg-white border-t-4 border-customgreys-primarybg"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.2 }}
+              viewport={{ amount: 0.4 }}>
+              <div className="flex items-center gap-4 mb-4">
+                <Image
+                  src={testimonial.image}
+                  alt={testimonial.name}
+                  width={60}
+                  height={60}
+                  className="rounded-full"
+                />
+                <div>
+                  <h3 className="font-semibold text-lg">{testimonial.name}</h3>
+                  <p className="text-sm text-gray-500">{testimonial.role}</p>
+                </div>
+              </div>
+              <p className="text-gray-600 text-sm">{testimonial.feedback}</p>
+            </motion.div>
           ))}
         </div>
       </div>

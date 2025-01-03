@@ -89,6 +89,7 @@ const config = {
 					"900": "#030d1f",
 					"950": "#020915",
 					DEFAULT: "#0a2550",
+					mainground: "#82ddf2",
 					foreground: "#ffffff", 
 				},
   			white: {

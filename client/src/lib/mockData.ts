@@ -14,6 +14,8 @@ export const subscriptionData = [
     status: "canceled",
     plan: "basic",
     amount: 10,
+  color: "text-customgreys-primarybg",
+    backgroundColor: "bg-customgreys-primarybg"
   },
   {
     userId: "user_6tHm89QwNpKj3Fx5Vy2RdLcBs",
@@ -23,6 +25,8 @@ export const subscriptionData = [
     status: "canceled",
     plan: "standard",
     amount: 20,
+    color: "text-customgreys-secondarybg",
+    backgroundColor: "bg-customgreys-secondarybg"
   },
   {
     userId: "user_2ntu96pUCljUV2T9W0AThzjacQB",
@@ -32,8 +36,34 @@ export const subscriptionData = [
     status: "active",
     plan: "premium",
     amount: 30,
+    color: "text-customgreys-primarybg",
+    backgroundColor: "bg-customgreys-primarybg"
   },
 ];
+
+export const testemonials = [
+  {
+    name: "Emma Johnson",
+    feedback:
+      "These courses are amazing! The instructors are very knowledgeable, and my son learned so much in a short time.",
+    role: "Parent",
+    image: "/emma.jpg",
+  },
+  {
+    name: "Sara Alshant",
+    feedback:
+      "The platform is fantastic. The courses are engaging, and the interactive projects helped me solidify my skills.",
+    role: "Student",
+    image: "/sara.jpg",
+  },
+  {
+    name: "Allen Smith",
+    feedback:
+      "As a complete beginner, I felt supported throughout my journey. Now, I’m confident in coding and love it!",
+    role: "Student",
+    image: "/allen.jpg",
+  },
+]
 
 export const planDetails: PlanDetails = {
   basic: {

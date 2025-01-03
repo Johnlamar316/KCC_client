@@ -5,21 +5,25 @@ interface SubscriptionCardProps {
   plan: string;
   amount: number;
   status: string;
+  color: string;
+  backgroundColor: string;
 }
 
-const SubscriptionCard = ({ plan, amount, status }: SubscriptionCardProps) => {
+const SubscriptionCard = ({
+  plan,
+  amount,
+  status,
+  color,
+  backgroundColor,
+}: SubscriptionCardProps) => {
   const subscriptionPlan = plan.charAt(0).toUpperCase() + plan.slice(1);
   const planInfo = planDetails[plan] || planDetails.basic;
-  const statusClass =
-    status === "active"
-      ? "bg-green-500"
-      : status === "canceled"
-      ? "bg-red-500"
-      : "bg-yellow-500";
 
   return (
-    <div className="flex flex-col p-6 rounded-lg bg-customgreys-secondarybg">
-      <h3 className="text-lg font-semibold mb-2">{subscriptionPlan} Plan</h3>
+    <div className="flex flex-col p-6 rounded-lg border border-customgreys-secondarybg ">
+      <h3 className={`text-lg font-semibold mb-2 ${color}`}>
+        {subscriptionPlan} Plan
+      </h3>
       <p className="text-gray-500 mb-4">
         {status.charAt(0).toUpperCase() + status.slice(1)} subscription
       </p>
@@ -36,15 +40,15 @@ const SubscriptionCard = ({ plan, amount, status }: SubscriptionCardProps) => {
       </div>
 
       {/* Discount */}
-      <div className="text-sm text-gray-500 mb-4">
+      <div className="text-sm  mb-4 ">
         <span className="font-semibold">Discount: </span>
-        <span className="text-primary-500">
+        <span className={`${color} font-bold`}>
           {planInfo.discount} off on all purchases
         </span>
       </div>
 
       <div
-        className={`text-white px-4 py-2 rounded-md bg-primary-700 hover:bg-primary-600 cursor-pointer`}>
+        className={`text-white-50 px-4 py-2 rounded-md ${backgroundColor} cursor-pointer transition-transform duration-300 transform hover:scale-105`}>
         Subscribe
       </div>
     </div>

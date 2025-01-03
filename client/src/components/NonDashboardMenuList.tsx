@@ -16,7 +16,8 @@ const NonDashboardMenuList = ({
         isMobileView
           ? "nondashboard-navbar__actions_mobile"
           : "nondashboard-navbar__actions"
-      }>
+      }
+      suppressHydrationWarning>
       <SignedIn>
         <UserButton
           appearance={{
@@ -64,7 +65,7 @@ const NonDashboardMenuList = ({
           href="/signup"
           className="nondashboard-navbar__auth-button--signup"
           scroll={false}>
-          Sign up
+          Enroll Now
         </Link>
       </SignedOut>
     </div>

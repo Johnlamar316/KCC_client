@@ -1,6 +1,7 @@
 "use client";
 
 import { Bell, BookOpen, Moon, Sun, Menu, X } from "lucide-react";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
@@ -52,9 +53,9 @@ const NonDashboardNavbar = () => {
             <div className="relative group">
               <Link
                 href="/search"
-                className="bg-customgreys-secondarybg pl-10 sm:pl-14 pr-6 sm:pr-20 py-3 sm:py-4 rounded-xl text-customgreys-dirtyGrey hover:text-white-50 hover:bg-customgreys-primarybg transition-all duration-300 text-sm sm:text-base"
+                className="bg-customgreys-secondarybg pl-10 sm:pl-14 pr-6 sm:pr-20 py-3 sm:py-4 rounded-xl text-gray-400  hover:text-white-50 hover:bg-customgreys-primarybg transition-all duration-300 text-sm sm:text-base"
                 scroll={false}>
-                <span className="hidden sm:inline">Search Courses</span>
+                <span className="hidden sm:inline ">Search Courses</span>
                 <span className="sm:hidden">Search</span>
               </Link>
               <BookOpen
@@ -77,7 +78,15 @@ const NonDashboardNavbar = () => {
           </SheetTrigger>
           <SheetContent>
             <SheetHeader>
-              <NonDashboardMenuList userRole={userRole} isMobileView={true} />
+              <SheetTitle>Menu</SheetTitle>
+              <SheetDescription>
+                <div>
+                  <NonDashboardMenuList
+                    userRole={userRole}
+                    isMobileView={true}
+                  />
+                </div>
+              </SheetDescription>
             </SheetHeader>
           </SheetContent>
         </Sheet>
