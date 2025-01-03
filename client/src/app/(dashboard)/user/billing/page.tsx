@@ -35,7 +35,7 @@ const UserBilling = () => {
         paymentType === "all" || transaction.paymentProvider === paymentType;
       return matchesTypes;
     }) || [];
-
+ 
   if (!isLoaded) return <Loading />;
   if (!user) return <div>Please sign in to view your billing information.</div>;
 

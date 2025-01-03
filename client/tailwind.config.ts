@@ -40,7 +40,7 @@ const config = {
   			},
   			card: {
   				DEFAULT: 'hsl(var(--card))',
-  				foreground: 'hsl(var(--card-foreground))'
+  				foreground: 'hsl(var(--card-foreground))' 
   			},
   			sidebar: {
   				DEFAULT: 'hsl(var(--sidebar-background))',

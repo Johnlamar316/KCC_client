@@ -69,7 +69,7 @@ const AppSidebar = () => {
             <SidebarMenuButton
               size="lg"
               onClick={() => toggleSidebar()}
-              className="group  hover:bg-customgreys-secondarybg">
+              className="group bg-primary-mainground  hover:bg-primary-mainground">
               <div className="app-sidebar__logo-container group">
                 <div className="app-sidebar__logo-wrapper">
                   <Image

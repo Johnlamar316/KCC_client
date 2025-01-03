@@ -24,9 +24,12 @@ const Navbar = ({ isCoursePage }: { isCoursePage: boolean }) => {
             <div className="relative group">
               <Link
                 href="/search"
-                className={cn("dashboard-navbar__search-input", {
-                  "!bg-customgreys-secondarybg": isCoursePage,
-                })}
+                className={cn(
+                  "bg-customgreys-secondarybg  pl-10 sm:pl-14 pr-6 sm:pr-20 py-3 sm:py-4 rounded-xl text-gray-400 hover:text-white-50 hover:bg-customgreys-primarybg transition-all duration-300 text-sm sm:text-base",
+                  {
+                    "!bg-customgreys-secondarybg": isCoursePage,
+                  }
+                )}
                 scroll={false}>
                 <span className="hidden sm:inline ">Search Courses</span>
                 <span className="sm:hidden">Search</span>
