@@ -6,10 +6,8 @@ import Link from "next/link";
 import Image from "next/image";
 
 const Dashboard = () => {
-  const { user, isLoaded } = useUser();
+  const { user } = useUser();
   const fullName = user?.fullName ?? "User";
-
-  console.log("fullName", fullName);
 
   return (
     <>
@@ -78,7 +76,7 @@ const Dashboard = () => {
               <li className="py-4 flex justify-between items-center">
                 <div>
                   <h3 className="text-lg font-semibold text-gray-700">
-                    Completed "React Basics"
+                    Completed React Basics
                   </h3>
                   <p className="text-sm text-gray-500">2 hours ago</p>
                 </div>
@@ -87,7 +85,7 @@ const Dashboard = () => {
               <li className="py-4 flex justify-between items-center">
                 <div>
                   <h3 className="text-lg font-semibold text-gray-700">
-                    Joined "Advanced JavaScript"
+                    Joined Advanced JavaScript
                   </h3>
                   <p className="text-sm text-gray-500">1 day ago</p>
                 </div>
@@ -96,7 +94,7 @@ const Dashboard = () => {
               <li className="py-4 flex justify-between items-center">
                 <div>
                   <h3 className="text-lg font-semibold text-gray-700">
-                    Earned "JavaScript Master" Badge
+                    Earned JavaScript Master Badge
                   </h3>
                   <p className="text-sm text-gray-500">3 days ago</p>
                 </div>
