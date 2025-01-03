@@ -171,7 +171,7 @@ const Landing = () => {
         </div>
       </div>
 
-      <div className="py-12 mt-10">
+      <div className="py-12 mt-10 mb-20">
         <h2 className="text-2xl font-semibold mb-6">Your Subscription Plans</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
           {subscriptionData.map((sub, index) => (
@@ -195,7 +195,12 @@ const Landing = () => {
           learning and making the most.
         </p>
 
-        <div className="landing__tags">
+        <motion.div
+          className="landing__tags"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ amount: 0.4 }}>
           {[
             "web development",
             "IT",
@@ -211,7 +216,7 @@ const Landing = () => {
               {tag}
             </span>
           ))}
-        </div>
+        </motion.div>
       </div>
 
       <div className="py-12">
