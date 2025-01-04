@@ -554,7 +554,7 @@ input[type="color"] {
 }
 
 .billing__table-cell {
-  @apply border-customgreys-secondarybg p-4 text-customgreys-darkerGrey;
+  @apply  text-customgreys-darkerGrey border border-customgreys-darkerGrey p-4;
 }
 
 .billing__table-row {
@@ -566,7 +566,7 @@ input[type="color"] {
 }
 
 .billing__table-body {
-  @apply bg-customgreys-primarybg  min-h-[200px];
+  @apply bg-customgreys-secondarybg  min-h-[200px];
 }
 
 /* User Courses Page */
