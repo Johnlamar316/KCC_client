@@ -566,7 +566,7 @@ input[type="color"] {
 }
 
 .billing__table-body {
-  @apply bg-primary-mainground  min-h-[200px];
+  @apply bg-customgreys-primarybg  min-h-[200px];
 }
 
 /* User Courses Page */
