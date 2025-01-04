@@ -1183,15 +1183,15 @@ input[type="color"] {
 }
 
 .toolbar__search {
-  @apply w-full px-5 h-12 bg-customgreys-primarybg placeholder-customgreys-dirtyGrey text-customgreys-dirtyGrey border-none rounded-md focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring;
+  @apply w-full px-5 h-12 bg-customgreys-secondarybg placeholder-customgreys-darkerGrey text-customgreys-darkerGrey border-none rounded-md focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring;
 }
 
 .toolbar__select {
-  @apply h-12 w-[180px] bg-customgreys-primarybg text-customgreys-dirtyGrey border-none;
+  @apply h-12 w-[180px] bg-customgreys-secondarybg text-customgreys-darkerGrey border-none;
 }
 
 .toolbar__select-item {
-  @apply cursor-pointer hover:!bg-gray-100 hover:!text-customgreys-darkGrey;
+  @apply cursor-pointer hover:!bg-gray-100 hover:!text-customgreys-secondarybg;
 }
 
 /* Wizard Stepper */
