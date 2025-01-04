@@ -1014,7 +1014,7 @@ input[type="color"] {
 
 /* Course Card */
 .course-card {
-  @apply flex flex-col w-full h-[340px] xl:h-[380px] border-none bg-customgreys-primarybg overflow-hidden cursor-pointer hover:bg-white-100/10 transition duration-200;
+  @apply flex flex-col w-full h-[340px] xl:h-[380px] border-none bg-primary-mainground overflow-hidden cursor-pointer hover:bg-white-100/10 transition duration-200;
 }
 
 .course-card__header {
@@ -1212,11 +1212,11 @@ input[type="color"] {
 }
 
 .wizard-stepper__circle--completed {
-  @apply bg-green-500;
+  @apply bg-green-500 text-white-50;
 }
 
 .wizard-stepper__circle--current {
-  @apply bg-primary-700;
+  @apply bg-customgreys-primarybg text-white-50;
 }
 
 .wizard-stepper__circle--upcoming {
@@ -1228,7 +1228,7 @@ input[type="color"] {
 }
 
 .wizard-stepper__text--active {
-  @apply text-white-100;
+  @apply text-customgreys-secondarybg;
 }
 
 .wizard-stepper__text--inactive {

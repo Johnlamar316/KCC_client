@@ -24,7 +24,7 @@ const WizardStepper = ({ currentStep }: WizardStepperProps) => {
                 )}
               </div>
               <p
-                className={cn("wizard-stepper__text", {
+                className={cn("wizard-stepper__text ", {
                   "wizard-stepper__text--active": currentStep >= step,
                   "wizard-stepper__text--inactive": currentStep < step,
                 })}>
