@@ -641,7 +641,7 @@ input[type="color"] {
 }
 
 .course__instructor-name {
-  @apply text-customgreys-dirtyGrey text-sm font-[500];
+  @apply text-white-50 text-sm font-[500];
 }
 
 .course__navigation {
@@ -721,7 +721,7 @@ input[type="color"] {
 }
 
 .course__instructor-avatar-fallback {
-  @apply bg-secondary-700 text-black;
+  @apply bg-customgreys-primarybg text-white-50;
 }
 
 .course__instructor-details {
@@ -737,7 +737,7 @@ input[type="color"] {
 }
 
 .course__instructor-bio {
-  @apply text-sm;
+  @apply text-sm text-white-50;
 }
 
 /* Chapters Sidebar */
@@ -831,7 +831,7 @@ input[type="color"] {
 }
 
 .chapters-sidebar__chapter-number--current {
-  @apply bg-secondary-700 text-gray-800;
+  @apply bg-secondary-700 text-white-50;
 }
 
 .chapters-sidebar__chapter-title {

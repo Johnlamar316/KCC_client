@@ -293,7 +293,7 @@ const Chapter = ({
       <span
         className={cn("chapters-sidebar__chapter-title", {
           "chapters-sidebar__chapter-title--completed": isCompleted,
-          "chapters-sidebar__chapter-title--current": isCurrentChapter,
+          "chapters-sidebar__chapter-title--current text-white-50": isCurrentChapter,
         })}
       >
         {chapter.title}
