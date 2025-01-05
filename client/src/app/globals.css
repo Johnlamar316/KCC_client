@@ -779,7 +779,7 @@ input[type="color"] {
 }
 
 .chapters-sidebar__section-content {
-  @apply pt-8 pb-8 bg-customgreys-primarybg/40;
+  @apply pt-8 pb-8 bg-slate-950;
 }
 
 .chapters-sidebar__progress {
@@ -799,7 +799,7 @@ input[type="color"] {
 }
 
 .chapters-sidebar__trophy {
-  @apply bg-secondary-700 rounded-full p-3 flex items-center justify-center;
+  @apply bg-customgreys-darkerGrey rounded-full p-3 flex items-center justify-center;
 }
 
 .chapters-sidebar__trophy-icon {
