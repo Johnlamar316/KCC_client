@@ -621,7 +621,7 @@ input[type="color"] {
 }
 
 .course__title {
-  @apply text-2xl text-white-50 font-semibold my-4;
+  @apply text-2xl text-customgreys-secondarybg font-semibold my-4;
 }
 
 .course__header {
@@ -637,11 +637,11 @@ input[type="color"] {
 }
 
 .course__avatar-fallback {
-  @apply bg-secondary-700 text-black;
+  @apply bg-secondary-700 text-white-50;
 }
 
 .course__instructor-name {
-  @apply text-white-50 text-sm font-[500];
+  @apply text-customgreys-secondarybg text-sm font-[500];
 }
 
 .course__navigation {
