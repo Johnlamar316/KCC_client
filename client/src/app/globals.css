@@ -733,7 +733,7 @@ input[type="color"] {
 }
 
 .course__instructor-title {
-  @apply text-sm;
+  @apply text-sm text-customgreys-darkGrey;
 }
 
 .course__instructor-bio {
@@ -843,7 +843,7 @@ input[type="color"] {
 }
 
 .chapters-sidebar__chapter-title--current {
-  @apply text-secondary-700;
+  @apply text-white-50;
 }
 
 .chapters-sidebar__text-icon {
