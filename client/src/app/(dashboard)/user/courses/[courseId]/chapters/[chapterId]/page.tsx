@@ -158,7 +158,7 @@ const Course = () => {
                   </AvatarFallback>
                 </Avatar>
                 <div className="course__instructor-details">
-                  <h4 className="course__instructor-name">
+                  <h4 className="course__instructor-name-span">
                     {course.teacherName}
                   </h4>
                   <p className="course__instructor-title">Senior UX Designer</p>

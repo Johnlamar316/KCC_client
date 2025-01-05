@@ -644,6 +644,10 @@ input[type="color"] {
   @apply text-customgreys-secondarybg text-sm font-[500];
 }
 
+.course__instructor-name-span {
+  @apply text-white-50 text-sm font-[500];
+}
+
 .course__navigation {
   @apply flex items-center;
 }
@@ -729,6 +733,10 @@ input[type="color"] {
 }
 
 .course__instructor-name {
+  @apply text-lg font-medium;
+}
+
+.course__instructor-name-span {
   @apply text-lg font-medium;
 }
 
