@@ -1054,8 +1054,9 @@ input[type="color"] {
 
 /* Course Card Search */
 .course-card-search {
-  @apply bg-customgreys-secondarybg overflow-hidden rounded-lg transition-transform duration-300 flex flex-col cursor-pointer border-2 h-full;
+  @apply bg-primary-mainground overflow-hidden rounded-lg transition-transform duration-300 flex flex-col cursor-pointer border-2 h-full shadow-lg;
 }
+
 
 .course-card-search:hover {
   @apply transform scale-105;
@@ -1402,7 +1403,7 @@ input[type="color"] {
 }
 
 .course-card-search__title {
-  @apply font-semibold line-clamp-1 text-white-50 text-lg;
+  @apply font-semibold line-clamp-1 text-customgreys-secondarybg text-lg;
 }
 
 .course-card-search__description {
@@ -1410,7 +1411,7 @@ input[type="color"] {
 }
 
 .course-card-search__teacher {
-  @apply text-gray-300 font-bold text-sm;
+  @apply text-gray-500 font-bold text-sm;
 }
 
 .course-card-search__footer {
