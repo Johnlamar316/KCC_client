@@ -1,15 +1,11 @@
 "use client";
 
-import { Bell, BookOpen, Moon, Sun, Menu, X } from "lucide-react";
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import { BookOpen, Menu } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "@/state/redux";
-import { setIsDarkMode } from "@/state";
-import { SignedIn, SignedOut, UserButton, useUser } from "@clerk/nextjs";
-import { dark } from "@clerk/themes";
-// import { Sheet } from "./ui/sheet";
+import { useUser } from "@clerk/nextjs";
+
 import {
   Sheet,
   SheetContent,
@@ -34,8 +30,6 @@ const NonDashboardNavbar = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const dispatch = useAppDispatch();
-  const isDarkMode = useAppSelector((state) => state.global.isDarkMode);
   return (
     <nav className="nondashboard-navbar">
       <div className="nondashboard-navbar__container">

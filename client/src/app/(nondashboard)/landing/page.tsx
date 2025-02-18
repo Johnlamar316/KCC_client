@@ -71,12 +71,14 @@ const Landing = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="landing">
+      className="landing"
+    >
       <motion.div
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="h-[80vh] flex flex-col md:flex-row items-center justify-center gap-8 px-6 md:px-1">
+        className="h-[80vh] flex flex-col md:flex-row items-center justify-center gap-8 px-6 md:px-1"
+      >
         <div className="text-center md:text-left max-w-lg">
           <h1 className="text-4xl md:text-5xl font-extrabold text-gray-800">
             Coding Courses for Kids and Teens
@@ -88,7 +90,8 @@ const Landing = () => {
           <div className="flex">
             <button
               onClick={() => router.push("/signup")}
-              className="mt-6 px-6 py-3 text-white-50 font-semibold rounded-lg shadow-lg mr-4 uppercase bg-secondary-mainground hover:bg-customgreys-secondarybg transition-all duration-300">
+              className="mt-6 px-6 py-3 text-white-50 font-semibold rounded-lg shadow-lg mr-4 uppercase bg-secondary-mainground hover:bg-customgreys-secondarybg transition-all duration-300"
+            >
               Enroll Now
             </button>
 
@@ -113,7 +116,8 @@ const Landing = () => {
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="landing__hero mb-40">
+        className="landing__hero mb-40"
+      >
         <div className="landing__hero-content">
           <h1 className="landing__title">Courses</h1>
           <p className="landing__description">
@@ -146,30 +150,34 @@ const Landing = () => {
         </div>
       </motion.div>
 
-      <div className="mb-20">
-        <h2 className="text-2xl font-semibold mb-6">Courses</h2>
-        <div className="landing__courses">
-          {displayedCourses &&
-            displayedCourses.map((course, index) => (
-              <motion.div
-                key={course.courseId}
-                initial={{ y: 50, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-                viewport={{ amount: 0.4 }}>
-                <CourseCardSearch
-                  course={course}
-                  onClick={() => handleCourseClick(course.courseId)}
-                />
-              </motion.div>
-            ))}
+      {displayedCourses ? (
+        <div className="mb-20">
+          <h2 className="text-2xl font-semibold mb-6">Courses</h2>
+          <div className="landing__courses">
+            {displayedCourses &&
+              displayedCourses.map((course, index) => (
+                <motion.div
+                  key={course.courseId}
+                  initial={{ y: 50, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.5, delay: index * 0.2 }}
+                  viewport={{ amount: 0.4 }}
+                >
+                  <CourseCardSearch
+                    course={course}
+                    onClick={() => handleCourseClick(course.courseId)}
+                  />
+                </motion.div>
+              ))}
+          </div>
+          <div
+            className="text-customgrey-secondarybg mt-4 cursor-pointer"
+            onClick={handleToggleCourses}
+          >
+            {showAllCourses ? "Show less" : "Show all courses"}
+          </div>
         </div>
-        <div
-          className="text-customgrey-secondarybg mt-4 cursor-pointer"
-          onClick={handleToggleCourses}>
-          {showAllCourses ? "Show less" : "Show all courses"}
-        </div>
-      </div>
+      ) : <div className="mb-20">No Course Available</div>}
 
       <div className="py-12 mt-10 mb-20">
         <h2 className="text-2xl font-semibold mb-6">Your Subscription Plans</h2>
@@ -180,7 +188,8 @@ const Landing = () => {
               initial={{ y: 50, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
-              viewport={{ amount: 0.4 }}>
+              viewport={{ amount: 0.4 }}
+            >
               <SubscriptionCard key={sub.subscriptionId} {...sub} />
             </motion.div>
           ))}
@@ -200,7 +209,8 @@ const Landing = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          viewport={{ amount: 0.4 }}>
+          viewport={{ amount: 0.4 }}
+        >
           {[
             "web development",
             "IT",
@@ -234,7 +244,8 @@ const Landing = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
-              viewport={{ amount: 0.4 }}>
+              viewport={{ amount: 0.4 }}
+            >
               <div className="flex items-center gap-4 mb-4">
                 <Image
                   src={testimonial.image}

@@ -335,7 +335,7 @@ input[type="color"] {
 }
 
 .landing-skeleton__hero {
-  @apply flex justify-between items-center mt-12 h-[500px] rounded-lg bg-customgreys-secondarybg;
+  @apply flex justify-between items-center mt-12 h-[500px] rounded-lg bg-customgreys-darkerGrey;
 }
 
 .landing-skeleton__hero-content {
